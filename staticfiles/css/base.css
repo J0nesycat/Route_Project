@@ -1,0 +1,24 @@
+body {
+    background: url("/static/images/background.avif") no-repeat center center fixed;
+    background-size: cover;
+    font-family: Arial, sans-serif;
+    text-align: center;
+    direction: rtl; /* Ensures proper Hebrew alignment */
+}
+
+header {
+    background: rgba(0, 0, 0, 0.7); /* Slight transparency */
+    padding: 10px;
+}
+
+header a {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+    margin: 15px;
+    font-weight: bold;
+}
+
+header a:hover {
+    color: lightgray;
+}

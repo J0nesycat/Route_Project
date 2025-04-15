@@ -1,0 +1,27 @@
+body {
+  background-color: lightyellow;
+}
+.route-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  direction: rtl;
+  font-weight: bold;
+  font-family: inherit;
+  padding: 12px 20px;
+  margin: 6px;
+  border: 2px solid #999;
+  border-radius: 8px; /* Square corners — you can change to 0 for super square */
+  background-color: white;
+  color: #333;
+  cursor: pointer;
+  font-size: 16px;
+  text-decoration: none;
+  transition: background-color 0.2s ease, border-color 0.2s ease;
+  min-width: 180px; /* Makes the button look boxy */
+}
+
+.route-button:hover {
+  background-color: #f5f5f5;
+  border-color: #555;
+}

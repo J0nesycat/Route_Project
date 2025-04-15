@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block content %}
+
+<body>
+    <h2>העלאת קובץ CSV</h2>
+
+    {% if success %}
+        <p style="color: green;">{{ success }}</p>
+    {% elif error %}
+        <p style="color: red;">{{ error }}</p>
+    {% endif %}
+
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">שלח</button>
+    </form>
+</body>
+
+{% endblock content %}
+
+
+
+

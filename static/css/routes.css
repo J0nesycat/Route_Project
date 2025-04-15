@@ -1,0 +1,73 @@
+/* Overlay styling */
+#loading-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: 9999;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-family: Arial, sans-serif;
+}
+
+/* Background video styling */
+#loading-overlay video.bg-video {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    transform: translate(-50%, -50%);
+    z-index: -1;
+    object-fit: cover;
+}
+
+/* Message box styling */
+.loading-message {
+    position: relative;
+    background: black;
+    color: purple;
+    padding: 20px 40px;
+    border-radius: 20px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+    font-size: 1.6rem;
+    font-weight: bold;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    direction: rtl;
+}
+
+.loading-text {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+
+
+
+/* Animated ... dots */
+.loading-dots::before {
+    content: "";
+    display: inline-block;
+    direction: rtl;
+    width: 1em;
+    text-align: right;
+    animation: dotsRTL 1.5s steps(3, end) infinite;
+}
+
+@keyframes dotsRTL {
+    0%   { content: ""; }
+    33%  { content: " ."; }
+    66%  { content: " .."; }
+    100% { content: " ..."; }
+}

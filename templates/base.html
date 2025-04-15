@@ -1,0 +1,29 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="he">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>מערכת ניהול מסלולים</title>
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+    {% block extra_head %}{% endblock %}
+    {% block extra_css %}{% endblock %}
+</head>
+
+<body>
+    <div class="background-wrapper"> <!-- Add this wrapper -->
+        <header>
+            <a href="{% url 'home' %}">בית</a>
+            <a href="{% url 'upload_csv' %}">העלאת קבצים</a>
+            <a href="{% url 'routes' %}">בניית מסלול</a>
+            <a href="{% url 'workforce_entry' %}">הפצה</a>
+        </header>
+        <main class="page-content">
+            {% block content %}
+            {% endblock %}
+        </main>
+
+    </div>
+</body>
+</html>

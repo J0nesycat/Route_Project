@@ -1,0 +1,81 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block extra_head %}
+    <link rel="stylesheet" href="{% static 'css/distribution.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="centered-container">
+    <div class="form-and-table">
+
+        <!-- City form -->
+        <form method="post" class="city-form">
+            {% csrf_token %}
+
+            <div class="form-info">
+                <h2>בחירת ערים להפצה ומספר חבילות</h2>
+
+                <label for="session_id"><strong>סדר יום:</strong></label>
+                <select name="session_id" id="session_id" onchange="this.form.submit();">
+                    <option disabled selected>בחר סדר יום</option>
+                    {% for session in all_sessions %}
+                        <option value="{{ session.id }}" {% if session.id == session_data.workforce_id %}selected{% endif %}>
+                            {{ session.date }} – {{ session.number_of_drivers }} נהגים
+                        </option>
+                    {% endfor %}
+                </select>
+
+                <p><strong>תאריך:</strong> {{ session_data.date }}</p>
+                <p><strong>מספר נהגים:</strong> {{ session_data.number_of_drivers }}</p>
+            </div>
+
+            <!-- City & package inputs -->
+            <label for="id_city">עיר:</label>
+            {{ form.city }}
+
+            <label for="id_packages">מספר חבילות:</label>
+            {{ form.number_of_packages }}
+
+            <div class="action-buttons">
+                <button type="submit" name="save" class="btn btn-primary">שמור</button>
+                <button type="submit" name="send" formnovalidate class="btn btn-secondary">שלח</button>
+            </div>
+        </form>
+
+        <!-- City table -->
+        {% if cities %}
+            <form method="post" class="city-list-form">
+                {% csrf_token %}
+                <h3>ערים שנבחרו:</h3>
+                <table class="centered-table">
+                    <thead>
+                        <tr>
+                            <th>עיר</th>
+                            <th>מספר חבילות</th>
+                            <th>פעולה</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for entry in cities %}
+                            <tr>
+                                <td>{{ entry.city_name }}</td>
+                                <td>
+                                    <input type="number" name="packages_{{ forloop.counter0 }}" value="{{ entry.number_of_packages }}">
+                                    <input type="hidden" name="city_id_{{ forloop.counter0 }}" value="{{ entry.city_id }}">
+                                    <input type="hidden" name="city_name_{{ forloop.counter0 }}" value="{{ entry.city_name }}">
+                                </td>
+                                <td>
+                                    <button name="delete" value="{{ forloop.counter0 }}" class="btn btn-danger">הסר</button>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+                <button type="submit" name="save_edits" class="btn btn-primary">💾 שמור שינויים</button>
+            </form>
+        {% endif %}
+
+    </div>
+</div>
+{% endblock %}
