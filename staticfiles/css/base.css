@@ -1,14 +1,27 @@
-body {
-    background: url("/static/images/background.avif") no-repeat center center fixed;
+.background-wrapper {
+    background-image: url("/static/images/background-home.jpg");
+    background-color: #f0f0f0;
     background-size: cover;
-    font-family: Arial, sans-serif;
+    background-repeat: no-repeat;
+    background-position: center;
+    min-height: 100vh;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     text-align: center;
-    direction: rtl; /* Ensures proper Hebrew alignment */
 }
 
 header {
-    background: rgba(0, 0, 0, 0.7); /* Slight transparency */
-    padding: 10px;
+    background: rgba(0, 0, 0, 0.7);
+    padding: 12px 20px;
+    display: flex;
+    justify-content: center;  /* ✅ Aligns links to the right in RTL */
+    gap: 30px;
+    width: 100%;
+    box-sizing: border-box;
+    border-bottom: 2px solid #ccc;
+    direction: rtl;  /* ✅ Explicit RTL direction */
 }
 
 header a {
@@ -21,4 +34,21 @@ header a {
 
 header a:hover {
     color: lightgray;
+}
+
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font-family: Arial, sans-serif;
+    direction: rtl;
+}
+
+.page-content {
+    flex: 1;
+    width: 100%;
+    max-width: 1000px;
+    padding: 40px 20px 80px; /* Add more top padding if needed */
+    box-sizing: border-box;
+    text-align: center;
 }
