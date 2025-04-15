@@ -15,18 +15,14 @@ class Coordinates:
             return None, None
 
         url = f"http://api.openweathermap.org/geo/1.0/direct?q={city_name}&limit=1&appid={OPENWEATHERMAP_API_KEY}"
-        response = requests.get(url)
+        response = requests.get(url, timeout=5)
 
         if response.status_code == 200:
             data = response.json()
             if data:
-                logger.debug(f"Coordinates fetched for {city_name}: {data[0]['lat']}, {data[0]['lon']}")
                 return data[0]["lat"], data[0]["lon"]
-            else:
-                logger.warning(f"No data returned for city: {city_name}")
-        else:
-            logger.error(f"Failed to fetch coordinates for {city_name}. Status code: {response.status_code}")
 
+        logger.warning(f"No data returned for city: {city_name}")
         return None, None
 
 
