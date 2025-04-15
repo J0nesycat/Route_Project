@@ -124,21 +124,26 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Show loader on form submit
     const form = document.getElementById("route-form");
-    form.addEventListener("submit", () => {
-    const overlay = document.getElementById("loading-overlay");
-    if (overlay) {
-        overlay.style.display = "flex";  // ✅ show immediately
-        overlay.style.opacity = 1;
+    form.addEventListener("submit", (e) => {
+    console.log("🟢 Submit pressed – loading overlay starting");
 
-        // ✅ hide after exactly 30 seconds
+    const overlay = document.getElementById("loading-overlay");
+
+    if (overlay) {
+        overlay.style.display = "flex";
+        overlay.style.opacity = "1";
+
+        // Hide after 30 seconds (30000 ms)
         setTimeout(() => {
             overlay.style.transition = "opacity 0.5s ease";
-            overlay.style.opacity = 0;
+            overlay.style.opacity = "0";
 
             setTimeout(() => {
                 overlay.style.display = "none";
-                overlay.style.opacity = 1;  // reset for next time
-            }, 500); // wait for fade-out to finish
-        }, 30000); // 30 seconds
+                overlay.style.opacity = "1";
+            }, 500);
+        }, 30000);
     }
+    });
 });
+
