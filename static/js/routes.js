@@ -143,7 +143,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 overlay.style.opacity = "0";
 
                 setTimeout(() => {
-                    overlay.style.display = "none";
+                    overlay.style.display = "flex";
                     overlay.style.opacity = "1";
                 }, 500);
             }, 30000);
