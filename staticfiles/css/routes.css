@@ -13,6 +13,7 @@
     justify-content: center;
     text-align: center;
     font-family: Arial, sans-serif;
+    backdrop-filter: blur(4px);
 }
 
 /* Background video styling */
@@ -27,6 +28,8 @@
     transform: translate(-50%, -50%);
     z-index: -1;
     object-fit: cover;
+    animation: fadeLoop 1s ease-in-out;
+    opacity: 0.9;
 }
 
 /* Message box styling */
@@ -70,4 +73,9 @@
     33%  { content: " ."; }
     66%  { content: " .."; }
     100% { content: " ..."; }
+}
+
+@keyframes fadeLoop {
+  from { opacity: 0; }
+  to { opacity: 0.9; }
 }

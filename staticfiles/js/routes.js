@@ -127,7 +127,12 @@ document.addEventListener("DOMContentLoaded", () => {
     form.addEventListener("submit", () => {
         const overlay = document.getElementById("loading-overlay");
         if (overlay) {
-            overlay.style.display = "flex";
+            overlay.style.transition = "opacity 0.5s ease";
+            overlay.style.opacity = 0;
+            setTimeout(() => {
+                overlay.style.display = "none";
+                overlay.style.opacity = 1;  // reset for next time
+            }, 500);
         }
     });
 });
