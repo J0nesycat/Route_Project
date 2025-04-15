@@ -86,14 +86,12 @@ document.addEventListener("DOMContentLoaded", () => {
                         })
                         .catch(err => console.error("❌ Directions API error:", err));
 
-                    // Depot marker
                     const depotMarker = new mapboxgl.Marker({ color: "green" })
                         .setLngLat([depot.lon, depot.lat])
                         .setPopup(new mapboxgl.Popup().setText(`Depot: ${depot.name}`))
                         .addTo(map);
                     markers.push(depotMarker);
 
-                    // Stop markers
                     coords.slice(1).forEach((coord, i) => {
                         const marker = new mapboxgl.Marker({ color: "blue" })
                             .setLngLat(coord)
@@ -106,7 +104,6 @@ document.addEventListener("DOMContentLoaded", () => {
             .catch(err => console.error("❌ Load error:", err));
     }
 
-    // Sync selected date from URL to dropdown
     const urlParams = new URLSearchParams(window.location.search);
     const selectedFromURL = urlParams.get("selected_date");
     const dropdown = document.getElementById("summary_date");
@@ -116,7 +113,6 @@ document.addEventListener("DOMContentLoaded", () => {
         loadRoutesForDate(selectedFromURL);
     }
 
-    // Load existing route manually
     document.getElementById("load-button").addEventListener("click", () => {
         const date = dropdown.value;
         loadRoutesForDate(date);
@@ -125,25 +121,32 @@ document.addEventListener("DOMContentLoaded", () => {
     // Show loader on form submit
     const form = document.getElementById("route-form");
     form.addEventListener("submit", (e) => {
-    console.log("🟢 Submit pressed – loading overlay starting");
+        console.log("🟢 Submit pressed – loading overlay starting");
 
-    const overlay = document.getElementById("loading-overlay");
+        const overlay = document.getElementById("loading-overlay");
 
-    if (overlay) {
-        overlay.style.display = "flex";
-        overlay.style.opacity = "1";
+        if (overlay) {
+            overlay.style.display = "flex";
+            overlay.style.opacity = "1";
 
-        // Hide after 30 seconds (30000 ms)
-        setTimeout(() => {
-            overlay.style.transition = "opacity 0.5s ease";
-            overlay.style.opacity = "0";
+            const video = overlay.querySelector("video");
+            if (video) {
+                video.currentTime = 0;
+                video.play().catch(err => {
+                    console.warn("🔇 Video autoplay failed:", err);
+                });
+            }
 
+            // Hide after 30 seconds
             setTimeout(() => {
-                overlay.style.display = "none";
-                overlay.style.opacity = "1";
-            }, 500);
-        }, 30000);
-    }
+                overlay.style.transition = "opacity 0.5s ease";
+                overlay.style.opacity = "0";
+
+                setTimeout(() => {
+                    overlay.style.display = "none";
+                    overlay.style.opacity = "1";
+                }, 500);
+            }, 30000);
+        }
     });
 });
-
