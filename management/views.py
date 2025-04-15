@@ -70,7 +70,15 @@ class RouteGenerationView(View):
             for driver_id, route_cities in enumerate(optimized_routes, start=1):
                 route_cities = sorted(route_cities, key=lambda x: depot_normalized in x, reverse=True)
                 route_string = " ← ".join(route_cities)
-                RouteSolution.objects.create(summary=summary, driver_id=driver_id, route=route_string)
+                logger.debug(f"Saving route: Driver {driver_id}, Route: {route_string}")
+                try:
+                    RouteSolution.objects.create(
+                        summary=summary,
+                        driver_id=driver_id,
+                        route=route_string,
+                    )
+                except Exception as e:
+                    logger.error(f"❌ Failed to save RouteSolution for driver {driver_id}: {e}")
 
             logger.info("Routes saved successfully.")
             return redirect(f"{reverse('routes')}?selected_date={parsed_date.strftime('%Y-%m-%d')}")
