@@ -2,7 +2,9 @@
 {% load static %}
 
 {% block extra_head %}
+    <link rel="stylesheet" href="{% static 'css/card-styling.css' %}">
     <link rel="stylesheet" href="{% static 'css/distribution.css' %}">
+    <link rel="stylesheet" href="{% static 'css/buttons.css' %}">
 {% endblock %}
 
 {% block content %}
@@ -26,20 +28,21 @@
                     {% endfor %}
                 </select>
 
-                <p><strong>תאריך:</strong> {{ session_data.date }}</p>
-                <p><strong>מספר נהגים:</strong> {{ session_data.number_of_drivers }}</p>
+
+                <label class="center-label"><strong>מספר נהגים:</strong> {{ session_data.number_of_drivers }}</label>
+
             </div>
 
             <!-- City & package inputs -->
-            <label for="id_city">עיר:</label>
+            <label><strong>עיר:</strong></label>
             {{ form.city }}
 
-            <label for="id_packages">מספר חבילות:</label>
+            <label><strong>מספר חבילות:</strong></label>
             {{ form.number_of_packages }}
 
             <div class="action-buttons">
-                <button type="submit" name="save" class="btn btn-primary">שמור</button>
-                <button type="submit" name="send" formnovalidate class="btn btn-secondary">שלח</button>
+              <button type="submit" name="save" class="btn btn-primary">שמור</button>
+              <button type="submit" name="send" formnovalidate class="btn btn-secondary">שלח</button>
             </div>
         </form>
 

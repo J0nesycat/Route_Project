@@ -1,24 +1,31 @@
 {% extends "base.html" %}
-{% block content %}
+{% load static %}
 
-<body>
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/card-styling.css' %}">
+<link rel="stylesheet" href="{% static 'css/buttons.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="centered-container">
+  <div class="form-card">
+
     <h2>העלאת קובץ CSV</h2>
 
     {% if success %}
-        <p style="color: green;">{{ success }}</p>
+      <p style="color: green;">{{ success }}</p>
     {% elif error %}
-        <p style="color: red;">{{ error }}</p>
+      <p style="color: red;">{{ error }}</p>
     {% endif %}
 
     <form method="post" enctype="multipart/form-data">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">שלח</button>
+      {% csrf_token %}
+      {{ form.as_p }}
+      <div class="action-buttons">
+        <button type="submit" class="btn btn-primary">שלח</button>
+      </div>
     </form>
-</body>
 
-{% endblock content %}
-
-
-
-
+  </div>
+</div>
+{% endblock %}

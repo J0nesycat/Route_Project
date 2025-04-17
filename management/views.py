@@ -300,6 +300,7 @@ class DistributionView(View):
         workforce_entry = DailyWorkForce.objects.get(id=session_data['workforce_id'])
 
         form = DistributionForm(initial={'session': workforce_entry})
+        form.fields['city'].queryset = City.objects.order_by("name")
         cities = request.session.get('distribution_data', [])
 
         return render(request, self.template_name, {

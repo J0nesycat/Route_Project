@@ -15,9 +15,10 @@
     <div class="background-wrapper"> <!-- Add this wrapper -->
         <header>
             <a href="{% url 'home' %}">בית</a>
-            <a href="{% url 'upload_csv' %}">העלאת קבצים</a>
+            <a href="{% url 'workforce_entry' %}">נתוני יום</a>
             <a href="{% url 'routes' %}">בניית מסלול</a>
-            <a href="{% url 'workforce_entry' %}">הפצה</a>
+            <a href="{% url 'upload_csv' %}">העלאת קבצים</a>
+
         </header>
         <main class="page-content">
             {% block content %}

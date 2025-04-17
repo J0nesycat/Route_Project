@@ -2,29 +2,40 @@
 {% load static %}
 
 {% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/buttons.css' %}">
+<link rel="stylesheet" href="{% static 'css/card-styling.css' %}">
 <link rel="stylesheet" href="{% static 'css/summary.css' %}">
+
 {% endblock %}
 
 {% block content %}
-<h2>תקציר</h2>
+<div class="centered-container">
 
-<p><strong>תאריך:</strong> {{ summary_data.date }}</p>
-<p><strong>מספר נהגים:</strong> {{ summary_data.number_of_drivers }}</p>
+  <!-- Summary Card -->
+  <div class="summary-card">
+    <h2>תקציר</h2>
 
-<h3>מספר חבילות לעיר\יישוב:</h3>
-<ul style="list-style-type: none; padding: 0;">
-  {% for item in summary_data.package_display %}
-    <li>{{ item }}</li>
-  {% endfor %}
-</ul>
+    <p><strong>תאריך:</strong> {{ summary_data.date }}</p>
+    <p><strong>מספר נהגים:</strong> {{ summary_data.number_of_drivers }}</p>
 
-<p><strong>סה"כ חבילות:</strong> {{ summary_data.total_packages }}</p>
-<p><strong>ממוצע חבילות לנהג:</strong> {{ summary_data.avg_packages_per_driver }}</p>
-<p><strong>סטיית תקן מינימאלית:</strong> {{ summary_data.std_dev_min }}</p>
-<p><strong>סטיית תקן מקסימאלית:</strong> {{ summary_data.std_dev_max }}</p>
+    <h3>מספר חבילות לעיר\יישוב:</h3>
+    <ul style="list-style-type: none; padding: 0;">
+      {% for item in summary_data.package_display %}
+        <li>{{ item }}</li>
+      {% endfor %}
+    </ul>
 
-<div style="margin-top: 30px; text-align: center;">
-  <a href="{% url 'workforce_entry' %}" class="route-button">📦 הזן נתוני יום חדש</a>
-  <a href="{% url 'routes' %}" class="route-button">🚛 עבור לבניית מסלול</a>
+    <p><strong>סה"כ חבילות:</strong> {{ summary_data.total_packages }}</p>
+    <p><strong>ממוצע חבילות לנהג:</strong> {{ summary_data.avg_packages_per_driver }}</p>
+    <p><strong>סטיית תקן מינימאלית:</strong> {{ summary_data.std_dev_min }}</p>
+    <p><strong>סטיית תקן מקסימאלית:</strong> {{ summary_data.std_dev_max }}</p>
+  </div>
+
+  <!-- Navigation Buttons -->
+  <div class="action-buttons">
+    <a href="{% url 'workforce_entry' %}" class="btn btn-primary">📦 הזן נתוני יום חדש</a>
+    <a href="{% url 'routes' %}" class="btn btn-secondary">🚛 עבור לבניית מסלול</a>
+  </div>
+
 </div>
 {% endblock %}
