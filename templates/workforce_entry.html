@@ -1,9 +1,32 @@
 {% extends 'base.html' %}
+{% load static %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/buttons.css' %}">
+<link rel="stylesheet" href="{% static 'css/card-styling.css' %}">
+{% endblock %}
+
 {% block content %}
-<h2>הכנס נתוני יום</h2>
-<form method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">שלח</button>
-</form>
+<div class="centered-container-2">
+  <div class="form-card">
+    <form method="post" class="city-form">
+      {% csrf_token %}
+      <h2>הכנס נתוני יום</h2>
+
+      <label for="{{ form.date.auto_id }}">תאריך:</label>
+      {{ form.date }}
+
+      <label for="{{ form.number_of_drivers.auto_id }}">מספר נהגים:</label>
+      {{ form.number_of_drivers }}
+
+      <label for="{{ form.depot.auto_id }}">מרלוג:</label>
+      {{ form.depot }}
+
+      <div class="action-buttons">
+        <button type="submit" name="save" class="btn btn-primary">שמור</button>
+
+      </div>
+    </form>
+  </div>
+</div>
 {% endblock %}

@@ -1,0 +1,145 @@
+
+/* Input & Select Field Styling */
+.city-form select,
+.city-form input,
+.city-form textarea {
+    width: 100%;
+    max-width: 200px;
+    padding: 8px 10px;
+    font-size: 14px;
+    line-height: 1.4;
+    text-align: center;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: white;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+}
+
+
+/* RTL form label alignment */
+.city-form label {
+    display: block;
+    text-align: center;
+    margin-top: 10px;
+    margin-bottom: 5px;
+    font-weight: bold;
+    width: 100%;
+}
+
+.city-form form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    align-items: flex-end;
+    width: 100%;
+    max-width: 400px;
+}
+
+/* Info block */
+.form-info {
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+
+
+/* Responsive tweaks */
+@media (max-width: 600px) {
+    .centered-container {
+        padding: 10px;
+    }
+
+    .centered-table {
+        width: 100%;
+        font-size: 14px;
+    }
+
+    input[type="number"] {
+        width: 100%;
+    }
+}
+
+.centered-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    min-height: 100vh;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+/* Card containers */
+.city-form,
+.city-list-form {
+    background: #ffffffee;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 500px;
+    box-sizing: border-box;
+    align-self: flex-start;
+}
+
+/* Table card */
+.centered-table {
+    width: 100%;
+    max-width: 700px;
+    border-collapse: collapse;
+    background: #ffffffee;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.centered-table th,
+.centered-table td {
+    padding: 12px;
+    border-bottom: 1px solid #ccc;
+    text-align: center;
+}
+
+.centered-table th {
+    background-color: #f2f2f2;
+}
+
+.center-label {
+    text-align: center;
+}
+
+.summary-card {
+    background: #ffffffee;
+    padding: 30px 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    max-width: 600px;
+    width: 100%;
+    box-sizing: border-box;
+    text-align: center;
+    margin: 0 auto;
+}
+
+.form-card {
+    background: #ffffffee;
+    padding: 30px 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    max-width: 600px;
+    width: 100%;
+    box-sizing: border-box;
+    text-align: center;
+    margin: 0 auto;        /* ✅ Center horizontally */
+}
+
+.centered-container-2 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 20px 0;     /* Just enough space without full height */
+    box-sizing: border-box;
+}
